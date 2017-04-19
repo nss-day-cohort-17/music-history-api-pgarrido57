@@ -4,7 +4,7 @@
 const { bookshelf } = require('../db/database');
 const song = require('../models/song');
 
-// < use model methods for getting all songs and one song then send the response back with the data>
+// <use model methods for getting all songs and one song then send the response back with the data>
 module.exports.getSongs = (req, res, next) => {
   song.getAll()
   .then( (songs) => {
@@ -31,7 +31,7 @@ module.exports.addSong = ({body}, res, next) => {
   .save()
   .then( () => res.status(201).json({"msg": "New Song"}))
   .catch( (error) => {
-    next(err);
+    next(error);
   });
 };
 
@@ -41,8 +41,8 @@ module.exports.editSong = ({body: {Title, SongLength, ReleaseDate, GenreId, Arti
   .then(data => {
     res.status(202).json(data)
   })
-  .catch( (err) => {
-    next(err);
+  .catch( (error) => {
+    next(error);
   });
 };
 
@@ -52,7 +52,7 @@ module.exports.deleteSong = ({params: {SongId}}, res, next) => {
   .then( (song) => {
     res.status(200).json(song);
   })
-  .catch( (err) => {
-    next(err);
+  .catch( (error) => {
+    next(error);
   });
 };
