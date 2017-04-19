@@ -9,7 +9,7 @@ const { getSongs, getSong, addSong, editSong, deleteSong } = require('../control
 
 // <define routes for getting all songs and a single song>
 router.get('/songs', getSongs)
-router.get('/songs/:SondId', getSong)
+router.get('/songs/:SongId', getSong)
 
 // <stretch: define routes for posting, deleting, editing a song>
 router.post('/songs/new', addSong)
