@@ -10,7 +10,7 @@ const { bookshelf } = require('../db/database');
 const song = bookshelf.Model.extend({
   tableName: 'Song',
 }, {
-  getAll: () => {
+  getAll: function() {
     return this.forge()
     .fetchAll()
     .then( (rows) => {
@@ -20,7 +20,7 @@ const song = bookshelf.Model.extend({
       return error
     });
   },
-  getSingleSong: (SongId) => {
+  getSingleSong: function(SongId) {
     return this.forge({SongId})
     .fetch()
     .then( (song) => {

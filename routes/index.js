@@ -4,7 +4,7 @@
 const { Router } = require('express');
 const router = Router();
 
-router.use(require('./songs');)
+router.use(require('./songs'));
 
 // this is an example of a root document. It returns a json representation of
 // all of our endpoints. (Just one endpoint exists in this tiny example app)
