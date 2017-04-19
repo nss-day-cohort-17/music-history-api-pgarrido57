@@ -15,8 +15,8 @@ module.exports.getSongs = (req, res, next) => {
   });
 };
 
-module.exports.getSong = ({params: {id}}, res, next) => {
-  song.getSingleSong(id)
+module.exports.getSong = ({params: {SongId}}, res, next) => {
+  song.getSingleSong(SongId)
   .then( (song) => {
     res.status(200).json(song)
   })
@@ -26,3 +26,22 @@ module.exports.getSong = ({params: {id}}, res, next) => {
 };
 
 // <stretch goal: methods for adding, deleting, editing a song>
+module.exports.addSong = ({body}, res, next) => {
+  song.forge(body)
+  .save()
+  .then( () => res.status(201).json({"msg": "New Song"}))
+  .catch( (error) => {
+    next(err);
+  });
+};
+
+module.exports.deleteSong = ({params: {SongId}}, res, next) => {
+  song.forge({SongId})
+  .destroy()
+  .then( (song) => {
+    res.status(200).json(song);
+  })
+  .catch( (err) => {
+    next(err);
+  });
+};

@@ -20,11 +20,11 @@ const song = bookshelf.Model.extend({
       return error
     });
   },
-  getSingleSong: (id) => {
-    return this.forge({id})
+  getSingleSong: (SongId) => {
+    return this.forge({SongId})
     .fetch()
-    .then( (show) => {
-      return show;
+    .then( (song) => {
+      return song;
     })
     .catch( (error) => {
       return error;
